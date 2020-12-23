@@ -1,0 +1,8 @@
+vodafone-cz:
+    bootstrap-server:
+        vodafone-irl-staging-admin-0:9092
+    schema-registery-url:
+        http://vodafone-irl-staging-admin-0:8082
+    output_file:
+            test
+        
