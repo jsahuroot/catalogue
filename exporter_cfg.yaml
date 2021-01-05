@@ -1,8 +1,30 @@
-vodafone-cz:
-    bootstrap-server:
-        vodafone-irl-staging-admin-0:9092
-    schema-registery-url:
-        http://vodafone-irl-staging-admin-0:8082
-    output_file:
-            test
-        
+---
+customers:
+  - id: vodafone-cz
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-cz
+  - id: vodafone-es
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-es
+  - id: vodafone-it
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-it
+  - id: vodafone-el
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-el
+  - id: vodafone-pt
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-pt
+  - id: vodafone-ro
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-ro
+  - id: vodafone-hu
+    bootstrap-server: vodafone-irl-staging-admin-0:9092
+    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
+    output_file: vodafone-hu
