@@ -1,30 +1,30 @@
----
-customers:
-  - id: vodafone-cz
+vodafone-cz:
     bootstrap-server: vodafone-irl-staging-admin-0:9092
     schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-cz
-  - id: vodafone-es
+    out_dir: /home/veveo/datagen/VODAFONE_CZ_CATALOG_DATAGEN/
+    s3Location: s3://vodafone-voice-digitalsmiths.net/stage/cs-CZ/datagen/nlu_catalogs/
+
+vodafone-es:
     bootstrap-server: vodafone-irl-staging-admin-0:9092
     schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-es
-  - id: vodafone-it
+    out_dir: /home/veveo/datagen/VODAFONE_ES_CATALOG_DATAGEN/
+    s3Location: s3://ds-veveo-voice/vodafone/es-staging/datagen/nlu_catalogs/
+
+vodafone-it:
     bootstrap-server: vodafone-irl-staging-admin-0:9092
     schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-it
-  - id: vodafone-el
+    out_dir: /home/veveo/datagen/VODAFONE_IT_CATALOG_DATAGEN/
+    s3Location: s3://vodafone-voice-digitalsmiths.net/stage/it-IT/datagen/nlu_catalogs/
+
+vodafone-pt:
     bootstrap-server: vodafone-irl-staging-admin-0:9092
     schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-el
-  - id: vodafone-pt
+    out_dir: /home/veveo/datagen/VODAFONE_PT_CATALOG_DATAGEN/
+    s3Location: s3://ds-veveo-voice/vodafone/pt-staging/datagen/nlu_catalogs/
+
+vodafone-de:
     bootstrap-server: vodafone-irl-staging-admin-0:9092
     schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-pt
-  - id: vodafone-ro
-    bootstrap-server: vodafone-irl-staging-admin-0:9092
-    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-ro
-  - id: vodafone-hu
-    bootstrap-server: vodafone-irl-staging-admin-0:9092
-    schema-registery-url: http://vodafone-irl-staging-admin-0:8082
-    output_file: vodafone-hu
+    out_dir: /home/veveo/datagen/VODAFONE_DE_CATALOG_DATAGEN/
+    s3Location: s3://ds-veveo-voice/vodafone/de-staging/datagen/nlu_catalogs/ 
+        
