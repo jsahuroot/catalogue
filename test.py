@@ -60,7 +60,7 @@ def get_data():
         #a.write("ID: {}, Type: {}, Content: {}".format(id, type, message))
         d = "ID: {}, Type: {}, Content: {}".format(id, type, message)
         s = json.dumps(message)
-        #print(s)
+        print(s)
 
 if __name__ == '__main__':
     get_data()
