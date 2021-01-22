@@ -45,10 +45,10 @@ class CatalogExporter(VtvTask):
 
         # SCHEMA URL
         self.register_client = CachedSchemaRegistryClient(url=schema_url)
-        consumer.subscribe(['catserver-%s-catalog' % self.catalogId], on_assign=self.my_on_assign)
+        consumer.subscribe(['catserver-%s-catalog' % self.catalogId], on_assign=self.on_assign)
         return consumer
 
-    def my_on_assign(self, consumer, partitions):
+    def on_assign(self, consumer, partitions):
         for p in partitions:
             # some starting offset, or use OFFSET_BEGINNING, et, al.
             # the default offset is STORED which means use committed offsets, and if
@@ -78,13 +78,16 @@ class CatalogExporter(VtvTask):
         catalogTopicPartition = TopicPartition("catserver-%s-catalog" % self.catalogId, 0, 0)
         lastMsgToRead = self.consumer.get_watermark_offsets(catalogTopicPartition)[1] - 1
         print(lastMsgToRead)
+        ps = self.consumer.list_topics("catserver-%s-catalog" % self.catalogId)
+        print(ps.topics)
         record_list = []
         cnt, rec, older_offsets, value_none = 0, 0, 0, 0
-        batch_size = 500
+        batch_size = 5
         current_offset = lastMsgToRead - batch_size + 1
         while current_offset >= 0: 
             catalogTopicPartition = TopicPartition("catserver-%s-catalog" % self.catalogId, 0, current_offset)
-            self.consumer.seek(catalogTopicPartition)
+            #catalogTopicPartition = TopicPartition("catserver-%s-catalog" % self.catalogId, 0, 0)
+            #self.consumer.seek(catalogTopicPartition)
             try:
                 msg_list = self.consumer.consume(batch_size, 100)
             except SerializerError as e:
@@ -97,7 +100,7 @@ class CatalogExporter(VtvTask):
                     return
                 if msg.value() is not None:
                     msg_id = msg.key().decode("utf-8")
-                    #print(msg.offset(),msg_id)
+                    print(msg.offset(),msg_id)
                     offset_val = ids_dict.get(msg_id)
                     if offset_val is None:
                         ids_dict[msg_id] = msg.offset()
@@ -117,6 +120,7 @@ class CatalogExporter(VtvTask):
                 cnt = cnt + 1
             current_offset = current_offset - batch_size
             self.logger.info("Continuing to the processes. Currently at offset {}/{}".format(current_offset, lastMsgToRead))
+            break
                 #catalogTopicPartition = TopicPartition("catserver-%s-catalog" % self.catalogId, 0, 0)
                 #self.consumer.seek(catalogTopicPartition)
         self.consumer.close()

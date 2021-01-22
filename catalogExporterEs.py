@@ -86,9 +86,9 @@ class CatalogExporter(VtvTask):
         cnt = 0
         rec = 0
         #while count > lastMsgToRead - 10 && count <= lastMsgToRead:  
-        while current_offset < lastMsgToRead:  
+        while current_offset < 30:  
             try:
-                msg_list = self.consumer.consume(500, 100)
+                msg_list = self.consumer.consume(5, 100)
             except SerializerError as e:
                 print("Message deserialization failed for {}: {}".format(msg_list, e))
                 raise SerializerError
@@ -99,7 +99,7 @@ class CatalogExporter(VtvTask):
                     return
 
                 msg_id = msg.key()
-                #print(msg.offset(),msg_id)
+                print(msg.offset(),msg_id)
                 if first_pass:
                     ids_dict[msg_id] = msg.offset()
                 else:
