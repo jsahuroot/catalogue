@@ -144,6 +144,7 @@ class CatalogExporter(VtvTask):
             if first_pass and current_offset == lastMsgToRead:
                 first_pass = False
                 current_offset = 0
+                cnt = 0
                 #catalogTopicPartition = TopicPartition("catserver-%s-catalog" % self.catalogId, 0, 0)
                 self.consumer.seek(catalogTopicPartition)
         self.consumer.close()
